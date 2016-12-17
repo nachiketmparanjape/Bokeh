@@ -1,7 +1,7 @@
 from bokeh.plotting import figure
 from bokeh.io import output_file, show
 from bokeh.sampledata.iris import flowers
-from bokeh.models import Range1d, PanTool, ResetTool, HoverTool
+from bokeh.models import Range1d, PanTool, ResetTool, HoverTool, ColumnDataSource
 
 #Naming the output html and defining the path
 output_file("C:\Users\labuser\Documents\Python_Data_Analysis\Learning_Bokeh\Output\iris.html")
@@ -17,8 +17,11 @@ f.toolbar_location='above'
 f.toolbar.logo = None
 
 #Create a specific Hover Tool
-#Tip - Can't use pandas with Hover, or most of the interactive features. We need to use 
+#Tip - Can't use pandas with Hover, or most of the interactive features. We need to use
+#Hence, use ColumnDataSource to define columns
+
 hover= HoverTool(tooltips=[("Species","@species"),("Sepal Width","@sepal_width")])
+f.add_tools(hover)
 
 """Stylizing the plot area"""
 f.plot_width=1500
